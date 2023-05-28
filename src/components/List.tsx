@@ -1,12 +1,15 @@
 type Props = {
   todoItems: string[];
+  deleteTodoItem: (index: number) => void;
 };
 
-const List: React.FunctionComponent<Props> = ({ todoItems }) => {
+const List = ({ todoItems, deleteTodoItem }: Props) => {
   return (
     <ul>
       {todoItems.map((item, index) => (
-        <li key={index}>{item}</li>
+        <li key={index}>
+          {item} <button onClick={() => deleteTodoItem(index)}>x</button>
+        </li>
       ))}
     </ul>
   );

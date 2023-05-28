@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import './App.css';
 import Layout from './components/Layout';
 import List from './components/List';
 import ListForm from './components/ListForm';
 
 function App() {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState<string>('');
   const [todoItems, setTodoItems] = useState<string[]>([]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
@@ -16,6 +16,12 @@ function App() {
     const newItem = inputValue;
     setTodoItems([...todoItems, newItem]);
     setInputValue('');
+  };
+
+  const deleteTodoItem = (index: number) => {
+    const updatedItems = [...todoItems];
+    updatedItems.splice(index, 1);
+    setTodoItems(updatedItems);
   };
 
   return (
@@ -28,7 +34,7 @@ function App() {
         handleChange={handleChange}
         addTodoItem={addTodoItem}
       />
-      <List todoItems={todoItems} />
+      <List todoItems={todoItems} deleteTodoItem={deleteTodoItem} />
     </>
   );
 }

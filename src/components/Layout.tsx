@@ -3,7 +3,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Layout: React.FC<Props> = ({ title, children }) => {
+const Layout = ({ title, children }: Props) => {
   return (
     <>
       <h1>{title}</h1>

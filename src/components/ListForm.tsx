@@ -1,15 +1,13 @@
+import { ChangeEvent, FormEvent } from 'react';
+
 type Props = {
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   inputValue: string;
   addTodoItem: () => void;
 };
 
-const ListForm: React.FC<Props> = ({
-  handleChange,
-  inputValue,
-  addTodoItem,
-}) => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+const ListForm = ({ handleChange, inputValue, addTodoItem }: Props) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     addTodoItem();
   };
