@@ -24,6 +24,12 @@ function App() {
     setTodoItems(updatedItems);
   };
 
+  const onUpdateTodo = (index: number, newItem: string) => {
+    const updatedItem = [...todoItems];
+    updatedItem[index] = newItem;
+    setTodoItems(updatedItem);
+  };
+
   return (
     <>
       <Layout title='Hello'>
@@ -34,7 +40,11 @@ function App() {
         handleChange={handleChange}
         addTodoItem={addTodoItem}
       />
-      <List todoItems={todoItems} deleteTodoItem={deleteTodoItem} />
+      <List
+        todoItems={todoItems}
+        deleteTodoItem={deleteTodoItem}
+        onUpdateTodo={onUpdateTodo}
+      />
     </>
   );
 }
